@@ -3,8 +3,6 @@ import pandas as pd
 
 import matplotlib.pyplot as plt
 from matplotlib import animation
-from matplotlib import rc
-rc('animation', html='html5')
 
 from functools import partial
 
@@ -91,10 +89,10 @@ def gradient_descent_animation(sample_size, b0, b1, x_mean, x_var, err_var, lr, 
     gdf_partial = partial(gradient_descent_frame, b0s=b0s[::step], b1s=b1s[::step],
                           lines=lines, title=title, step=step)
     
-    gdf_animation = animation.FuncAnimation(fig, gdf_partial, frames=len(b0s[::step])-1,
+    gd_animation = animation.FuncAnimation(fig, gdf_partial, frames=len(b0s[::step])-1,
                                             interval=50, blit=True)
 
-    display(gdf_animation)
-    
     plt.close()
+    
+    return gd_animation
     
